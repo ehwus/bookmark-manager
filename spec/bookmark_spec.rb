@@ -3,22 +3,40 @@ require 'bookmark'
 describe Bookmark do
   describe '.all' do
     it 'returns all bookmarks' do
-      Bookmark.create('http://www.makersacademy.com')
-      Bookmark.create('http://www.destroyallsoftware.com')
-      Bookmark.create('http://www.google.com')
-      
+      bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+      Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
+      Bookmark.create(url: 'http://www.google.com', title: "Google")
+
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include("http://www.makersacademy.com")
-      expect(bookmarks).to include("http://www.destroyallsoftware.com")
-      expect(bookmarks).to include("http://www.google.com")
+      expect(bookmarks.length).to eq(3)
+      expect(bookmarks.first).to be_a Bookmark
+      expect(bookmarks.first.id).to eq(bookmark.id)
+      expect(bookmarks.first.url).to eq('http://www.makersacademy.com')
     end
   end
 
   describe ".create" do
     it "creates a new bookmark" do
-      Bookmark.create("http://testbookmark.com")
-      expect(Bookmark.all).to include("http://testbookmark.com")
+      bookmark = Bookmark.create(url: "http://testbookmark.com", title: "Test Bookmark")
+      expect(bookmark.url).to eq("http://testbookmark.com")
+      expect(bookmark.title).to eq("Test Bookmark")
+    end
+  end
+
+  describe ".delete" do
+    it "deletes a bookmark by ID" do
+      bookmark = Bookmark.create(url: "http://testbookmark.com", title: "Test Bookmark")
+      id = bookmark.id
+      Bookmark.delete(id: id)
+      expect(Bookmark.all.length).to eq(0)
+    end
+
+    it "only deletes one bookmark" do
+      Bookmark.create(url: "http://testbookmark.com", title: "Test Bookmark")
+      test = Bookmark.create(url: "http://testbookmark.com", title: "Test Bookmark 2: Electric Boogaloo")
+      Bookmark.delete(id: test.id)
+      expect(Bookmark.all.length).to eq(1)
     end
   end
 end
