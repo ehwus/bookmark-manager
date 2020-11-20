@@ -9,5 +9,6 @@ gem 'sinatra-flash'
 group :test do
   gem 'capybara'
   gem 'rspec'
+  gem 'simplecov'
 end
 
