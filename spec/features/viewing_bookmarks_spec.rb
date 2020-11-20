@@ -1,7 +1,7 @@
 feature 'Viewing bookmarks' do
   scenario 'visiting the index page' do
     visit('/')
-    expect(page).to have_content("Bookmarks")
+    expect(page).to have_content('Bookmarks')
   end
 
   scenario 'A user can see bookmarks' do

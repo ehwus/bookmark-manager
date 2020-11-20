@@ -15,7 +15,7 @@ class Comment
   end
 
   attr_reader :id, :text, :bookmark_id
-  
+
   def initialize(id:, text:, bookmark_id:)
     @id = id
     @text = text

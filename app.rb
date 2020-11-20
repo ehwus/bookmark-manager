@@ -23,7 +23,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    flash[:notice] = "Please enter a valid URL." unless Bookmark.create(url: params[:url], title: params[:title])
+    flash[:notice] = 'Please enter a valid URL.' unless Bookmark.create(url: params[:url], title: params[:title])
     redirect('/bookmarks')
   end
 
@@ -51,7 +51,6 @@ class BookmarkManager < Sinatra::Base
     Comment.create(text: params[:comment], bookmark_id: params[:id].to_i)
     redirect('/bookmarks')
   end
-
 
   run! if app_file == $0
 end

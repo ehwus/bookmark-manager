@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'pg'
 gem 'sinatra'
@@ -11,4 +11,3 @@ group :test do
   gem 'rspec'
   gem 'simplecov'
 end
-
