@@ -14,7 +14,7 @@ feature 'Adding and viewing comments' do
       click_button 'Submit'
 
       expect(current_path).to eq '/bookmarks'
-      expect(first('.bookmark')).to have_content('This is a test comment on this bookmark')
+      expect(first('.comments')).to have_content('This is a test comment on this bookmark')
     end
   end
 end

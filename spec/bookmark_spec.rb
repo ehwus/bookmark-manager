@@ -71,7 +71,7 @@ describe Bookmark do
 
       comment = bookmark.comments.first
 
-      expect(comment['text']).to eq('Test comment')
+      expect(comment.text).to eq('Test comment')
     end
   end
 end

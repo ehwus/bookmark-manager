@@ -1,5 +1,6 @@
 .bookmark-options {
     display: flex;
+    padding-left: 2em;
 }
 
 .bookmark-options button {

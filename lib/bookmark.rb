@@ -1,4 +1,5 @@
 require 'pg'
+require_relative './comment'
 
 class Bookmark
   attr_reader :id, :title, :url
@@ -18,6 +19,7 @@ class Bookmark
 
   def self.create(url:, title:)
     return false unless is_url?(url)
+
     result = DatabaseConnection.query("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}') RETURNING id, title, url;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
@@ -38,7 +40,8 @@ class Bookmark
   end
 
   def comments
-    DatabaseConnection.query("SELECT * FROM comments WHERE bookmark_id = #{id}")
+    result = DatabaseConnection.query("SELECT * FROM comments WHERE bookmark_id = #{id}")
+    result.map { |comment| Comment.new(id: comment['id'], text: comment['text'], bookmark_id: comment['bookmark_id']) }
   end
 
   private
