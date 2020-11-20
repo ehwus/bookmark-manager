@@ -4,5 +4,14 @@
 
 .bookmark-options button {
     margin-right: 10px;
-    font-size: small;
+    font-size: x-small;
+    padding: 5px;
+}
+
+.bookmark-options button:hover {
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: red;
 }

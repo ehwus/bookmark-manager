@@ -20,7 +20,7 @@
           <span class="bookmark-options">
           <form action="/bookmarks/<%= bookmark.id %>" method="post">
             <input type="hidden" name="_method" value="DELETE" />
-            <button type="submit">Delete</button>
+            <button type="submit" class="delete-button">Delete</button>
           </form>
           <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
             <button type="submit">Edit</button>
