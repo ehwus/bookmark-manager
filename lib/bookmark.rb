@@ -44,6 +44,16 @@ class Bookmark
     result.map { |comment| Comment.new(id: comment['id'], text: comment['text'], bookmark_id: comment['bookmark_id']) }
   end
 
+  def add_tag(tag:)
+    tag_database_id = DatabaseConnection.query("INSERT INTO tags (content) VALUES ('#{tag}') RETURNING id;")
+    DatabaseConnection.query("INSERT INTO bookmark_tags (bookmark_id, tag_id) VALUES ('#{@id}', '#{tag_database_id[0]['id']}');")
+  end
+
+  def tags
+    results = DatabaseConnection.query("SELECT tags.id, content FROM bookmark_tags INNER JOIN tags ON tags.id = bookmark_tags.tag_id WHERE bookmark_tags.bookmark_id = '#{@id}';")
+    results.map { |tag| Tag.new(id: results[0]['id'], content: results[0]['content']) }
+  end
+
   def self.is_url?(url)
     url =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
   end

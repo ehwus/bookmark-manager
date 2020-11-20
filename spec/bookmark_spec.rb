@@ -74,4 +74,12 @@ describe Bookmark do
       expect(comment.text).to eq('Test comment')
     end
   end
+
+  describe '#add_tag' do
+    it "gives a tag to the bookmark" do
+      bookmark = Bookmark.create(url: 'http://testbookmark.com', title: 'Test Bookmark')
+      bookmark.add_tag(tag: "Interesting")
+      expect(bookmark.tags.first.content).to include("Interesting")
+    end
+  end
 end

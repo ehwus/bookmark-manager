@@ -1,0 +1,1 @@
+CREATE TABLE tags(id SERIAL PRIMARY KEY, content VARCHAR(60), bookmark_id INTEGER REFERENCES bookmarks (id) ON DELETE CASCADE);
