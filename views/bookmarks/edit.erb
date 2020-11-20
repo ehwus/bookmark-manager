@@ -5,10 +5,10 @@
   <body>
     <main>
       <h1>Edit bookmark</h1>
-      <form method="post" action="/bookmarks/<%=@id%>">
+      <form method="post" action="/bookmarks/<%=@bookmark.id%>">
         <input type="hidden" name="_method" value="PATCH" />
-        <input type="text" name="title" placeholder="Title" />
-        <input type="text" name="url" placeholder="URL" />
+        <input type="text" name="title" placeholder="<%=@bookmark.title%>" />
+        <input type="text" name="url" placeholder="<%=@bookmark.url%>" />
         <br />
         <input type="submit" name="Submit" value="Submit" />
       </form>
