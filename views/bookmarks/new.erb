@@ -1,5 +1,15 @@
-<form method="post" action="/bookmarks">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="url" placeholder="URL" />
-    <input type="submit" name="Submit" />
-</form>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+  </head>
+  <body>
+    <main>
+        <h1>Add new Bookmark</h1>
+      <form method="post" action="/bookmarks">
+        <input type="text" name="title" placeholder="Title" />
+        <input type="text" name="url" placeholder="URL" />
+        <input type="submit" name="Submit" value="Submit" />
+      </form>
+    </main>
+  </body>
+</html>

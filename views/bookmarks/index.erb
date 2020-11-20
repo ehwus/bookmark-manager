@@ -1,10 +1,32 @@
-<% @bookmarks.each do |bookmark| %>
-<li class="bookmark" id="bookmark-<%= bookmark.id %>">
-    <a href="<%= bookmark.url %>" target="_blank">
-        <%= bookmark.title%>
-    </a>
-    <form action="/bookmarks/<%= bookmark.id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE" />
-        <input type="submit" value="Delete" />
-    </form>
-<% end%>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+  </head>
+  <body>
+    <main>
+      <h1>Bookmarks</h1>
+      <% if @bookmarks.empty?%>
+      <p>No bookmarks added yet!</p>
+      <%end %>
+      <% @bookmarks.each do |bookmark| %>
+        <li class="bookmark" id="bookmark-<%= bookmark.id %>">
+          <a href="<%= bookmark.url %>" target="_blank">
+            <%= bookmark.title%>
+          </a>
+          <form action="/bookmarks/<%= bookmark.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete" />
+          </form>
+        <% end%>
+        <footer>
+          <h2>Add new bookmark</h2>
+          <form method="post" action="/bookmarks">
+            <input type="text" name="title" placeholder="Title" />
+            <input type="text" name="url" placeholder="URL" />
+            <br />
+            <input type="submit" name="Submit" value="Submit" />
+          </form>
+        </footer>
+      </main>
+    </body>
+  </html>

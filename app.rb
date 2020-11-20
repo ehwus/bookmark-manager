@@ -5,7 +5,7 @@ class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
 
   get '/' do
-    'Bookmark Manager'
+    redirect('/bookmarks')
   end
 
   get '/bookmarks' do
