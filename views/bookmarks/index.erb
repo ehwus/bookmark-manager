@@ -11,7 +11,8 @@
         <p>No bookmarks added yet!</p>
       <%end %>
       <% @bookmarks.each do |bookmark| %>
-        <li class="bookmark" id="bookmark-<%= bookmark.id %>" style="display: flex;">
+        <div class="bookmark">
+        <li id="bookmark-<%= bookmark.id %>">
           <a href="<%= bookmark.url %>" target="_blank">
             <%= bookmark.title%>
           </a>
@@ -23,14 +24,17 @@
             <button type="submit" class="delete-button">Delete</button>
           </form>
           <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
-            <button type="submit">Edit</button>
+            <button type="submit" name="Edit">Edit</button>
           </form>
-          <form action="/bookmarks/<%= bookmark.id%>/comment/new" method="get">
-            <button type="submit">New Comment</button>
+          <form action="/bookmarks/<%= bookmark.id%>/comments/new" method="get">
+            <button type="submit"name="Add Comment">Add Comment</button>
           </form>
           </span>
-        
+        <%bookmark.comments.each do |comment|%>
+        <li><%=comment['text']%></li>
+        <%end%>
       <% end%>
+      </div>
       <br>
       <br>
       <footer>

@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+    <h1>We'd love to hear your thoughts</h1>
+    <form action="/bookmarks/<%= @bookmark_id%>/comments" method="POST">
+        <input name="comment" type="text" />
+        <br>
+        <input value="Submit" type="submit">
+    </form>
+    </main>
+  </body>
+</html>
