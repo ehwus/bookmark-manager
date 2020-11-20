@@ -12,29 +12,33 @@
       <%end %>
       <% @bookmarks.each do |bookmark| %>
         <div class="bookmark">
-        <li id="bookmark-<%= bookmark.id %>">
-          <a href="<%= bookmark.url %>" target="_blank">
-            <%= bookmark.title%>
-          </a>
-        </li>
+          <li id="bookmark-<%= bookmark.id %>">
+            <a href="<%= bookmark.url %>" target="_blank">
+              <%= bookmark.title%>
+            </a>
+          </li>
           <br>
           <span class="bookmark-options">
-          <form action="/bookmarks/<%= bookmark.id %>" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            <button type="submit" class="delete-button">Delete</button>
-          </form>
-          <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
-            <button type="submit" name="Edit">Edit</button>
-          </form>
-          <form action="/bookmarks/<%= bookmark.id%>/comments/new" method="get">
-            <button type="submit"name="Add Comment">Add Comment</button>
-          </form>
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="delete-button">Delete</button>
+            </form>
+            <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
+              <button type="submit" name="Edit">Edit</button>
+            </form>
+            <form action="/bookmarks/<%= bookmark.id%>/comments/new" method="get">
+              <button type="submit"name="Add Comment">Add Comment</button>
+            </form>
           </span>
-        <%bookmark.comments.each do |comment|%>
-        <li><%=comment['text']%></li>
-        <%end%>
+        </div>
+          <div class="comments">
+            <h5>Comments</h5>
+            <%bookmark.comments.each do |comment|%>
+              <li><%=comment['text']%></li>
+            <%end%>
+        </div>
+        <br>
       <% end%>
-      </div>
       <br>
       <br>
       <footer>

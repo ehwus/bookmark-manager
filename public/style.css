@@ -15,3 +15,14 @@
 .delete-button {
     background-color: red;
 }
+
+.bookmark a {
+    font-size: xx-large;
+    padding-top: 1em;
+}
+
+.comments {
+    padding-left: 5px;
+    border: thin solid black;
+    background-color: lightblue;
+}
