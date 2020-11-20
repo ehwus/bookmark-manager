@@ -1,13 +1,15 @@
-<html>
+ <html>
   <head>
     <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
   </head>
   <body>
     <main>
-        <h1>Add new Bookmark</h1>
-      <form method="post" action="/bookmarks">
+      <h1>Edit bookmark</h1>
+      <form method="post" action="/bookmarks/<%=@id%>">
+        <input type="hidden" name="_method" value="PATCH" />
         <input type="text" name="title" placeholder="Title" />
         <input type="text" name="url" placeholder="URL" />
+        <br />
         <input type="submit" name="Submit" value="Submit" />
       </form>
     </main>

@@ -39,4 +39,13 @@ describe Bookmark do
       expect(Bookmark.all.length).to eq(1)
     end
   end
+
+  describe ".update" do
+    it "updates a bookmark by ID" do
+      bookmark = Bookmark.create(url: "http://testbookmark.com", title: "Test Bookmark")
+      updated_bookmark = Bookmark.update(id: bookmark.id, url: 'www.makersacademy.com', title: 'Makers Academy')
+      expect(updated_bookmark.title).to eq('Makers Academy')
+      expect(updated_bookmark.url).to eq('www.makersacademy.com')
+    end
+  end
 end
