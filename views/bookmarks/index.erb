@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <main>
@@ -10,29 +11,37 @@
         <p>No bookmarks added yet!</p>
       <%end %>
       <% @bookmarks.each do |bookmark| %>
-        <li class="bookmark" id="bookmark-<%= bookmark.id %>">
-          <a href="<%= bookmark.url %>" target="_blank" style="margin-bottom: 0;">
+        <li class="bookmark" id="bookmark-<%= bookmark.id %>" style="display: flex;">
+          <a href="<%= bookmark.url %>" target="_blank">
             <%= bookmark.title%>
           </a>
-          <div style="margin-top: 0;">
-            <form action="/bookmarks/<%= bookmark.id %>" method="post">
-              <input type="hidden" name="_method" value="DELETE" />
-              <input type="submit" value="Delete" style="float: left; transform: scale(0.6, 0.6);"/>
-            </form>
-            <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
-              <button type="submit" style="transform: scale(0.6, 0.6);">Edit</button>
-            </form>
-          </div>
-        <% end%>
-        <footer>
-          <h2>Add new bookmark</h2>
-          <form method="post" action="/bookmarks">
-            <input type="text" name="title" placeholder="Title" />
-            <input type="text" name="url" placeholder="URL" />
-            <br />
-            <input type="submit" name="Submit" value="Submit" />
+        </li>
+          <br>
+          <span class="bookmark-options">
+          <form action="/bookmarks/<%= bookmark.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit">Delete</button>
           </form>
-        </footer>
-      </main>
-    </body>
-  </html>
+          <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
+            <button type="submit">Edit</button>
+          </form>
+          <form action="/bookmarks/<%= bookmark.id%>/comment/new" method="get">
+            <button type="submit">New Comment</button>
+          </form>
+          </span>
+        
+      <% end%>
+      <br>
+      <br>
+      <footer>
+        <h2>Add new bookmark</h2>
+        <form method="post" action="/bookmarks">
+          <input type="text" name="title" placeholder="Title" />
+          <input type="text" name="url" placeholder="URL" />
+          <br />
+          <input type="submit" name="Submit" value="Submit" />
+        </form>
+      </footer>
+    </main>
+  </body>
+</html>
