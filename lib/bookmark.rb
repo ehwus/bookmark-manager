@@ -51,7 +51,7 @@ class Bookmark
 
   def tags
     results = DatabaseConnection.query("SELECT tags.id, content FROM bookmark_tags INNER JOIN tags ON tags.id = bookmark_tags.tag_id WHERE bookmark_tags.bookmark_id = '#{@id}';")
-    results.map { |tag| Tag.new(id: results[0]['id'], content: results[0]['content']) }
+    results.map { |tag| Tag.new(id: tag['id'], content: tag['content']) }
   end
 
   def self.is_url?(url)

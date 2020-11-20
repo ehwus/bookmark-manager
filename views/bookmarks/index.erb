@@ -18,10 +18,19 @@
             </a>
           </li>
           <br>
+          <%unless bookmark.tags.empty?%>
+            <div class="tags">
+              <h5>Tags</h5>
+              <ul>
+                <%bookmark.tags.each do |tag|%>
+                  <li><%= tag.content%></li>
+                <%end%>
+              </ul>
+            </div>
+          <%end%>
           <span class="bookmark-options">
-            <form action="/bookmarks/<%= bookmark.id %>" method="post">
-              <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit" class="delete-button">Delete</button>
+            <form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
+              <button type="submit">Add Tag</button>
             </form>
             <form action="/bookmarks/<%= bookmark.id%>/edit" method="get">
               <button type="submit" name="Edit">Edit</button>
@@ -29,10 +38,14 @@
             <form action="/bookmarks/<%= bookmark.id%>/comments/new" method="get">
               <button type="submit"name="Add Comment">Add Comment</button>
             </form>
+             <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="delete-button">Delete</button>
+            </form>
           </span>
         </div>
         <%unless bookmark.comments.empty?%>
-        <h5>Comments</h5>
+          <h5>Comments</h5>
           <%bookmark.comments.each do |comment|%>
             <div class="comments">
               <li><%=comment.text%></li>

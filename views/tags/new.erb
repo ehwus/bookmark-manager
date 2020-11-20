@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+    <h1>What tag do you want for this beauty?</h1>
+    <form action="/bookmarks/<%= params[:id]%>/tags/" method="POST">
+        <input name="tag" type="text" />
+        <br>
+        <input value="Submit" type="submit">
+    </form>
+    </main>
+  </body>
+</html>
