@@ -4,6 +4,7 @@
   </head>
   <body>
     <main>
+      <%= flash[:notice] %>
       <h1>Bookmarks</h1>
       <% if @bookmarks.empty?%>
         <p>No bookmarks added yet!</p>
