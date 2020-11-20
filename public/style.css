@@ -22,7 +22,9 @@
 }
 
 .comments {
-    padding-left: 5px;
-    border: thin solid black;
-    background-color: lightblue;
+    padding: 5px 25px;
+    background-color: rgba(0, 94, 255, 0.75);
+    color: white;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }

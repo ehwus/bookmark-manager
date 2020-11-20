@@ -31,12 +31,14 @@
             </form>
           </span>
         </div>
-          <div class="comments">
+          
             <h5>Comments</h5>
+            
             <%bookmark.comments.each do |comment|%>
+            <div class="comments">
               <li><%=comment['text']%></li>
+            </div>
             <%end%>
-        </div>
         <br>
       <% end%>
       <br>
